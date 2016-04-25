@@ -29,17 +29,17 @@ Hint: You only use the development certificate when you install/run the app dire
 ### What should be added
 
 supportingfiles/tumitfahrer-Prefix.pch:
-line 33: Salt (random)
-line 34: ApiAddress
+* line 33: Salt (random)
+* line 34: ApiAddress
 
 AppDelegate.m:
 line 371: HockeyApp identifier
 line 384: gcm tracking id
 
 supportingfiles/tumitfahrer-info.plist:
-removed value for FacebookApp ID
+* removed value for FacebookApp ID
 
 zLibraries/GooglePlacesAutocomplete/SPGooglePlacesAutocompleteUtilities.h
-line 9: kGoogleAPIKey
+* line 9: kGoogleAPIKey
 
 Also, the file GoogleService-info.plist should be added to the project, it can be downloaded from the google account that will be used. 
