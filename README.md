@@ -25,3 +25,21 @@ In line 221 in the appdelegate there is the following line: kGGLInstanceIDAPNSSe
 This is part of the GCM Device Registration, so where you set up notifications. This boolean value has to match the used provision profile. So if you use a DEVELOPMENT certificate u have to set it to YES, otherwise to NO. The point is everything will work fine in the app but GCM will throw an error in the webservice, so notifications wont arrive. 
 
 Hint: You only use the development certificate when you install/run the app directly from xcode via "Run".
+
+### What should be added
+
+supportingfiles/tumitfahrer-Prefix.pch:
+line 33: Salt (random)
+line 34: ApiAddress
+
+AppDelegate.m:
+line 371: HockeyApp identifier
+line 384: gcm tracking id
+
+supportingfiles/tumitfahrer-info.plist:
+removed value for FacebookApp ID
+
+zLibraries/GooglePlacesAutocomplete/SPGooglePlacesAutocompleteUtilities.h
+line 9: kGoogleAPIKey
+
+Also, the file GoogleService-info.plist should be added to the project, it can be downloaded from the google account that will be used. 
