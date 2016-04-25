@@ -1,0 +1,20 @@
+TUMitfahrer v2.3
+Copyright 2016 Technische Universität München
+
+Authors:
+Apostolos Diamantis
+
+
+Licenses for third party references:
+  AFNetworking under MIT License
+  AsyncImageDownloader under Apache Software License, Version 2.0
+  EAIntroView under Apache Software License, Version 2.0
+  Facebook-iOS-SDK under Apache Software License, Version 2.0
+  Google/CloudMessaging under Apache Software License, Version 2.0
+  Google/Analytics under Apache Software License, Version 2.0
+  JSMessagesViewController under MIT License
+  JSQSystemSoundPlayer under MIT License
+  MMDrawerController under MIT License
+  RMDateSelectionViewController under MIT License
+  RestKit under Apache Software License, Version 2.0
+  SocketRocket under Apache Software License, Version 2.0
