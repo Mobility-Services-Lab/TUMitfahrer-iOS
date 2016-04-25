@@ -1,0 +1,68 @@
+//
+//  BadgeUtilities.h
+//  tumitfahrer
+//
+/*
+ * Copyright 2015 TUM Technische Universität München
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+//
+
+#import <Foundation/Foundation.h>
+
+@class Badge;
+
+/**
+ *  Class that handles displayig of badges in the left menu.
+ */
+@interface BadgeUtilities : NSObject
+
+/**
+ *  Fetches from the core data badges with time of last updating in webservice.
+ *
+ *  @return The Badge object.
+ */
++(Badge *)fetchLastBadgeDateFromCoreData;
+/**
+ *  Saves an updated badge to core date.
+ *
+ *  @param badge The Badge object.
+ */
++(void)saveBadgeToPersisentStore:(Badge *)badge;
+/**
+ *  Updates time of checking of campus rides.
+ *
+ *  @param date Time of checking campus rides
+ */
++(void)updateCampusDateInBadge:(NSDate*)date;
+/**
+ *  Updates time of checking of activity rides.
+ *
+ *  @param date Time of checking activity rides
+ */
++(void)updateActivityDateInBadge:(NSDate*)date;
+/**
+ *  Updates time of checking of my rides section.
+ *
+ *  @param date Time of checking my rides.
+ */
++(void)updateMyRidesDateInBadge:(NSDate*)date;
+/**
+ *  Updates time of checking of the timeline.
+ *
+ *  @param date Time of checking timeline
+ */
++(void)updateTimelineDateInBadge:(NSDate*)date;
+
+@end

@@ -1,0 +1,78 @@
+//
+//  ControllerUtilities.m
+//  tumitfahrer
+//
+/*
+ * Copyright 2015 TUM Technische Universität München
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+//
+
+#import "ControllerUtilities.h"
+#import "OfferViewController.h"
+#import "OwnerOfferViewController.h"
+#import "Ride.h"
+#import "User.h"
+#import "CurrentUser.h"
+#import "EAIntroView.h"
+#import "ActionManager.h"
+
+@implementation ControllerUtilities
+
++(UIViewController *)viewControllerForRide:(Ride *)ride {
+    if(![ride.rideOwner.userId isEqualToNumber:[CurrentUser sharedInstance].user.userId]) {
+        OfferViewController *offerVc = [[OfferViewController alloc] init];
+        offerVc.ride = ride;
+        return offerVc;
+    } else {
+        OwnerOfferViewController *ownerOfferVc = [[OwnerOfferViewController alloc] init];
+        ownerOfferVc.ride = ride;
+        return ownerOfferVc;
+    }
+}
+
++(UIView *)prepareIntroForView:(UIView *)view {
+    // first intro page
+    
+    EAIntroPage *page1 = [self introPageWithTitle:@"Need ride to the uni?" descriptionText:@"Search for a ride to your campus and join fellow students going to the uni by car. Travel in a nice student atmosphere." logo:[UIImage imageNamed:@"CampusIntroIcon"]];
+    
+    EAIntroPage *page2 = [self introPageWithTitle:@"Looking for weekend ideas?" descriptionText:@"Join activity rides and enjoy cool trip to IKEA, nearby lake or a hiking trip in the mountains." logo:[UIImage imageNamed:@"ActivityIntroIcon"]];
+    
+    EAIntroPage *page3 = [self introPageWithTitle:@"Have free seats in your car?" descriptionText:@"Create a ride and share travel expenses between all people." logo:[UIImage imageNamed:@"SeatsIntroIcon"]];
+    
+    EAIntroPage *page4 = [self introPageWithTitle:@"Don't have a car" descriptionText:@"Request a ride offer. Fellow students will pick you up. Enojoy the car ride" logo:[UIImage imageNamed:@"PassengerIntroIcon"]];
+    
+    EAIntroPage *page5 = [self introPageWithTitle:@"Be social" descriptionText:@"Stay informed about current rides via timeline. Let know your TUM friends about your rides via facebook" logo:[UIImage imageNamed:@"ShareIntroIcon"]];
+    
+    EAIntroView *intro = [[EAIntroView alloc] initWithFrame:view.bounds andPages:@[page1, page2, page3, page4, page5]];
+    
+    return intro;
+}
+
++(EAIntroPage *)introPageWithTitle:(NSString *)title descriptionText:(NSString *)descriptionText logo:(UIImage *)logo {
+    EAIntroPage *page = [EAIntroPage page];
+    page.title = title;
+    page.titlePositionY = 220;
+    page.titleIconView = [[UIImageView alloc] initWithImage:logo];
+    page.titleIconPositionY = 100;
+//    page.descWidth = 250;
+    page.desc = descriptionText;
+    page.descPositionY = 200;
+    page.titleIconPositionY = 100;
+    page.bgImage = [UIImage imageNamed:@"bg1.jpg"];
+    return page;
+}
+
+
+@end

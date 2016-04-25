@@ -1,0 +1,36 @@
+//
+//  MenuTableViewCell.m
+//  tumitfahrer
+//
+/*
+ * Copyright 2015 TUM Technische Universität München
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+//
+
+#import "MenuTableViewCell.h"
+
+@implementation MenuTableViewCell
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    if (selected) {
+        self.selectedView.hidden = NO;
+        self.menuLabel.textColor = [UIColor whiteColor];
+    } else {
+        self.selectedView.hidden = YES;
+        self.menuLabel.textColor = [UIColor colorWithRed:0.808 green:0.808 blue:0.808 alpha:1];
+    }
+}
+
+@end

@@ -1,0 +1,135 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import <CoreData/CoreData.h>
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+// Make RestKit globally available
+#import <RestKit/RestKit.h>
+#import "UIViewController+SideBarController.h"
+#import "UINavigationController+Fade.h"
+#import "UIColor+LayoutColors.h"
+
+static NSString * const SALT = @"";
+static NSString * const API_ADDRESS = @"";
+
+# pragma mark - Constants
+static int const TableSingleRowHeight = 45;
+static int const TableHeaderHeight = 45;
+static int const TableFooterHeight = 45;
+
+// width of buttons, input fields, etc
+static int const cUIElementWidth = 253;
+
+// width of buttons, input fields, etc
+static int const  cUIElementHeight = 40;
+
+// padding between UI elements
+static int const cUIElementPadding = 10;
+
+static int const cMarginTop =120;
+
+// slide menu offset
+static int const cSlideMenuOffset = 70;
+
+typedef enum rideTypes : NSUInteger {
+    CurrentUserIsRideOwnerAndDriver = 0,
+    CurrentUserIsRideOwnerAndRequests = 1,
+    CurrentUserIsNotRideOwnerAndDriver = 2,
+    CurrentUserIsNotRideOwnerAndRequests = 3
+} SpecifcRideTypeEnum;
+
+typedef enum generalRideType : NSUInteger {
+    RideOffer = 0,
+    RideRequest = 1
+} GeneralRideTypeEnum;
+
+typedef enum contentTypes : NSUInteger {
+    ContentTypeCampusRides = 0,
+    ContentTypeActivityRides = 1,
+    ContentTypeRideSearch = 3
+} ContentType;
+
+typedef enum timelineContentTypes : NSUInteger {
+    AllActivity = 0,
+    NearbyActivity = 1,
+    UserActivity = 2
+} TimelineContentType;
+
+typedef enum showTypes : NSUInteger {
+    ShowAsModal = 0,
+    ShowAsViewController = 1,
+} DisplayType;
+
+typedef enum {
+    ShouldDisplayNormally = 0,
+    ShouldShareRideOnFacebook
+} ShouldDisplayEnum;
+
+typedef enum {
+    GoBackNormally = 0,
+    GoBackToList
+} ShouldGoBackEnum;
+
+typedef enum cellType : NSUInteger {
+    PassengerCell = 0,
+    RequestCell = 1
+} CellTypeEnum;
+
+typedef enum  : NSUInteger {
+    NegativeStomt,
+    PositiveStomt,
+    NoneStomt,
+} StomtOpinionType;
+
+typedef void(^completionHandlerWithIndex)(NSInteger);
+
+typedef void(^boolCompletionHandler)(BOOL);
+
+typedef void(^mutableArrayCompletionHandler)(NSMutableArray *);
+
+typedef void(^arrayCompletionHandler)(NSArray *);
+
+# pragma mark - API mapping for RestKit
+
+static NSString *API_USERS = @"/api/v3/users";
+static NSString *API_USERS_RIDES = @"/api/v3/users/:userId/rides";
+static NSString *API_USERS_RATINGS = @"/api/v3/users/:userId/ratings";
+static NSString *API_PUT_USERS_RIDES = @"/api/v3/users/:userId/rides/:rideId";
+static NSString *API_USERS_DEVICES = @"/api/v3/users/:userId/devices";
+static NSString *API_SESSIONS = @"/api/v3/sessions";
+static NSString *API_RIDES = @"/api/v3/rides";//not called directly in the app
+static NSString *API_RIDES_REQUESTS = @"/api/v3/rides/:rideId/requests";
+static NSString *API_RIDES_REQUEST = @"/api/v3/rides/:rideId/requests/:requestId";
+static NSString *API_RIDES_CONVERSATIONS = @"/api/v3/rides/:rideId/conversations";
+static NSString *API_RIDES_CONVERSATION = @"/api/v3/rides/:rideId/conversations/:conversationId";
+static NSString *API_RIDES_CONVERSATIONS_MES = @"/api/v3/rides/:rideId/conversations/:conversationId/messages";
+static NSString *API_SEARCH = @"/api/v3/search";
+static NSString *API_ACTIVITIES = @"/api/v3/activities";
+static NSString *API_ACTIVITIES_BADGES = @"/api/v3/activities/badges";
+static NSString *API_AVATAR = @"/api/v3/users/:userId/avatar";
+static NSString *API_CHANGE_PASSWORD = @"/api/v3/password";
+#else
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreServices/CoreServices.h>
+#endif
