@@ -33,8 +33,8 @@ supportingfiles/tumitfahrer-Prefix.pch:
 * line 34: ApiAddress
 
 AppDelegate.m:
-line 371: HockeyApp identifier
-line 384: gcm tracking id
+* line 371: HockeyApp identifier
+* line 384: gcm tracking id
 
 supportingfiles/tumitfahrer-info.plist:
 * removed value for FacebookApp ID
